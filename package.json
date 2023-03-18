@@ -1,0 +1,54 @@
+{
+  "name": "electron-app",
+  "version": "0.0.1",
+  "private": true,
+  "homepage": "./",
+  "author": "Leo",
+  "main": "dist/main.js",
+  "scripts": {
+    "prebuild": "tsc --build && max build",
+    "build": "pnpm run prebuild && electron-builder --win --x64",
+    "format": "prettier --cache --write .",
+    "postinstall": "max setup",
+    "predev": "tsc --build  && concurrently \"max dev\" \"wait-on http://localhost:8000 && electron ./dist/main.js\"",
+    "prepare": "husky install",
+    "preview": "tsc --build & max build & electron ./dist/main.js",
+    "setup": "max setup",
+    "start": "cross-env NODE_ENV=development pnpm run predev"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "@ant-design/pro-components": "^2.0.1",
+    "@umijs/max": "^4.0.61",
+    "antd": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "concurrently": "^7.6.0",
+    "cross-env": "^7.0.3",
+    "electron": "^23.1.4",
+    "electron-builder": "^23.6.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "prettier-plugin-organize-imports": "^2",
+    "prettier-plugin-packagejson": "^2",
+    "typescript": "^4.1.2",
+    "wait-on": "^7.0.1"
+  },
+  "build": {
+    "appId": "your-app-id",
+    "productName": "Your App Name",
+    "directories": {
+      "output": "./release"
+    },
+    "win": {
+      "icon": "./src/assets/logo.png"
+    },
+    "files": [
+      "dist/**/*"
+    ],
+    "extends": null
+  }
+}
