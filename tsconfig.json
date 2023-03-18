@@ -13,7 +13,9 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "allowJs": true,
+    "skipLibCheck": true,
     "outDir": "./dist"
   },
-  "exclude": ["src", "dist", "mock", "config"]
+  "include": ["./main/**/*"],
+  "exclude": ["/node_modules/**/*", "/src/**/*", "/config/**/*"]
 }

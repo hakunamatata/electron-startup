@@ -7,20 +7,25 @@
   "main": "dist/main.js",
   "scripts": {
     "prebuild": "tsc --build && max build",
-    "build": "pnpm run prebuild && electron-builder --win --x64",
+    "build": "npm run prebuild && electron-builder --win --x64",
     "format": "prettier --cache --write .",
     "postinstall": "max setup",
     "predev": "tsc --build  && concurrently \"max dev\" \"wait-on http://localhost:8000 && electron ./dist/main.js\"",
     "prepare": "husky install",
     "preview": "tsc --build & max build & electron ./dist/main.js",
     "setup": "max setup",
-    "start": "cross-env NODE_ENV=development pnpm run predev"
+    "start": "cross-env NODE_ENV=development npm run predev"
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@ant-design/pro-components": "^2.0.1",
+    "@electron/remote": "^2.0.9",
+    "@serialport/bindings-cpp": "^10.8.0",
+    "@serialport/parser-byte-length": "^10.5.0",
     "@umijs/max": "^4.0.61",
-    "antd": "^5.0.0"
+    "ahooks": "^3.7.5",
+    "antd": "^5.0.0",
+    "serialport": "^10.5.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

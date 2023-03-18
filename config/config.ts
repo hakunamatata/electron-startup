@@ -1,5 +1,5 @@
 import { defineConfig } from '@umijs/max';
-import { routes } from './routes';
+// import { routes } from './routes';
 export default defineConfig({
   // 默认路由模式是“browser”，打包后会出现首页或其他页面找不到继而加载不出来的情况，所以需要改成hash模式。
   hash: true,
@@ -18,9 +18,10 @@ export default defineConfig({
   model: {},
   initialState: {},
   request: {},
-  layout: {
-    title: '@umijs/max',
+  layout: false,
+  // routes,
+  externals: {
+    serialport: 'commonjs2 serialport', // Ref: https://copyprogramming.com/howto/electron-and-serial-ports
   },
-  routes,
   npmClient: 'pnpm',
 });
